@@ -1,101 +1,73 @@
-# 🚀 CachyOS Installation & Setup Guide
+# CachyOS: Beginner’s Installation & Setup Guide
 
-CachyOS installation for beginners — a simple, step-by-step guide to download, install, and optimize CachyOS for maximum speed and gaming performance.
-
----
-
-### 📌 What is CachyOS, and why use it?
-<details>
-<summary><b>▶ Click here for info</b></summary>
-
-<br>
-
-* **Beginner-Friendly Arch Linux:** Gives you all the speed and latest software of Arch Linux without complex manual setup.
-* **Extreme Speed:** Uses custom-built kernels optimized for your CPU to make apps and games run noticeably smoother.
-* **Pre-Configured for Gaming:** Comes out of the box with built-in support for Steam, custom Proton builds, and performance tools.
-
-</details>
+A simple, straightforward guide to downloading, flashing, and installing **CachyOS**—an Arch Linux-based distribution optimized for speed, low latency, and modern gaming.
 
 ---
 
-### 📥 1. How to Download the ISO
-<details>
-<summary><b>▶ Click here for info</b></summary>
+## 🚀 Why Choose CachyOS?
 
-<br>
+CachyOS is designed to make Arch Linux fast and easy to use without the complicated manual setup.
 
-1. Visit the official CachyOS download page: [cachyos.org/download](https://cachyos.org/download).
-2. Choose **Desktop Edition (x86_64)**.
-3. Click **Direct Download** to get the `.iso` file.
-
-</details>
+* **Optimized Performance:** Uses custom x86-64 CPU-optimized packages (v3/v4) for faster app launches and smoother system responsiveness.
+* **Gaming Ready:** Includes out-of-the-box support for Nvidia/AMD graphics drivers, Steam, Lutris, Proton, and custom kernel tweaks for gaming performance.
+* **Beginner Friendly Installer:** Uses the Calamares graphical installer so you can set up your system visually without typing terminal commands.
 
 ---
 
-### 🔌 2. Making a Bootable USB Drive
-<details>
-<summary><b>▶ Click here for info</b></summary>
+## 1. Pre-Installation Checklist
 
-<br>
-
-1. Download **Rufus** (`rufus.ie`) or **BalenaEtcher**.
-2. Insert a USB flash drive (**8 GB or larger**).
-3. Select your downloaded CachyOS `.iso` file.
-4. If using Rufus, choose **DD Image mode** when prompted, then click **START**.
-
-</details>
+Before starting, make sure you have:
+* A USB flash drive (**8GB or larger**).
+* An active internet connection (Ethernet or Wi-Fi).
+* Backed up any important files on your PC and USB drive.
 
 ---
 
-### ⚙️ 3. BIOS / UEFI Settings (Before Installing)
-<details>
-<summary><b>▶ Click here for info</b></summary>
+## 2. Downloading CachyOS
 
-<br>
+Always get the official ISO file directly from the source:
 
-Restart your PC and tap `DEL` or `F2` to enter your BIOS, then change these settings:
-
-* **Secure Boot:** Disabled ❌
-* **Fast Boot:** Disabled ❌
-* **SATA / Storage Mode:** AHCI 
-* **Boot Mode:** UEFI
-
-</details>
+* **Official Website:** [cachyos.org](https://cachyos.org)
+* **SourceForge / Mirrors:** Select the **Desktop Edition** ISO (x86-64-v3 if supported by your CPU, or the standard x86-64 build).
 
 ---
 
-### 🛠️ 4. Step-by-Step Installation
-<details>
-<summary><b>▶ Click here for info</b></summary>
+## 3. Creating a Bootable USB Drive
 
-<br>
+### On Windows (Using Rufus):
+1. Plug in your USB drive.
+2. Open **Rufus** and select your USB drive under **Device**.
+3. Click **Select** and choose the downloaded CachyOS ISO.
+4. Set the partition scheme to **GPT** (for modern UEFI systems).
+5. Click **Start** (if prompted, choose **DD Image mode**).
 
-1. Boot your PC from the USB drive.
-2. Select **Launch Installer** (Choose **Online Installer**).
-3. **Desktop Choice:** Pick **KDE Plasma** (recommended for beginners and gamers).
-4. **Graphics Driver:**
-   * Select **NVIDIA (Proprietary)** if you have an NVIDIA GPU.
-   * Select **Open-Source / AMD / Intel** if you have AMD or Intel graphics.
-5. **Partitioning:** Select **Erase Disk** for automatic setup, and choose **BTRFS** as the filesystem.
-6. Set your username and password, then click **Install**.
-
-</details>
+### On Linux (Using Ventoy or BalenaEtcher):
+* You can simply copy the ISO file onto a **Ventoy** USB drive or write it using **BalenaEtcher**.
 
 ---
 
-### ⚡ 5. First Commands to Run After Installation
-<details>
-<summary><b>▶ Click here for info</b></summary>
+## 4. Booting and Installing
 
-<br>
+1. Shut down your PC and plug in the bootable USB drive.
+2. Power on your PC and hit your motherboard’s **Boot Menu Key** (usually `F12`, `F11`, `F8`, or `Del`).
+3. Select your USB drive from the UEFI boot options.
+4. Once the live desktop loads, click **Launch Installer**.
+5. Follow the step-by-step setup:
+   * **Language & Location:** Set your keyboard layout and timezone.
+   * **Desktop Environment:** Select your preferred desktop layout (KDE Plasma is recommended for beginners).
+   * **Partitioning:** Choose *Erase Disk* for a clean install, or manually partition if dual-booting alongside Windows.
+   * **User Setup:** Enter your username and password.
+6. Click **Install** and wait for the process to complete. Reboot when finished and remove the USB drive.
 
-Open the terminal after booting into CachyOS and run these commands to update and install gaming software:
+---
+
+## 5. Recommended Post-Install Steps
+
+Once you log in for the first time:
+
+### A. Update the System
+Open a terminal and refresh your package database:
 
 ```bash
-# Update mirror speed and system packages
-sudo cachyos-rate-mirrors
+sudo cachyos-bugreport
 sudo pacman -Syu
-
-# Install gaming software (Steam, Wine, Lutris)
-sudo pacman -S steam lutris wine-staging proton-cachyos
-
